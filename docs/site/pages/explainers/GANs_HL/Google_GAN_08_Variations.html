@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Variations</title><link rel="stylesheet" href="../../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://developers.google.com/machine-learning/gan/applications" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../../explainers/GANs_HL/Google_GAN_08_Variations.md">Raw file</a><a class="topcta" href="../../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Variations</h1><p class="licence">From Google for Developers, licensed CC BY 4.0.</p><p><img src="https://developers.google.com/_static/images/icons/spark.svg" alt="Spark icon" /></p>
+<h2 id="page-summary">Page Summary</h2>
+<p>outlined_flag</p>
+<ul>
+<li><p>Generative Adversarial Networks (GANs) are evolving with new techniques and applications, including progressive growing and conditional generation.</p></li>
+<li><p>GANs are capable of diverse tasks such as image-to-image translation (e.g., CycleGANs turning horses into zebras), text-to-image synthesis, and super-resolution.</p></li>
+<li><p>They can also be applied to tasks like face inpainting by filling in missing parts of images and even text-to-speech synthesis.</p></li>
+<li><p>While impressive, GANs still have limitations, such as difficulty in reproducing fine details and the need for large datasets.</p></li>
+</ul>
+<p>Researchers continue to find improved GAN techniques and new uses for GANs. Here's a sampling of GAN variations to give you a sense of the possibilities.</p>
+<h2 id="progressive-gans">Progressive GANs</h2>
+<p>In a progressive GAN, the generator's first layers produce very low resolution images, and subsequent layers add details. This technique allows the GAN to train more quickly than comparable non-progressive GANs, and produces higher resolution images.</p>
+<p>For more information see <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1710.10196">Karras et al, 2017</a>.</p>
+<h2 id="conditional-gans">Conditional GANs</h2>
+<p>Conditional GANs train on a labeled data set and let you specify the label for each generated instance. For example, an unconditional MNIST GAN would produce random digits, while a conditional MNIST GAN would let you specify which digit the GAN should generate.</p>
+<p>Instead of modeling the joint probability P(X, Y), conditional GANs model the conditional probability P(X | Y).</p>
+<p>For more information about conditional GANs, see <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1411.1784">Mirza et al, 2014</a>.</p>
+</main></body></html>

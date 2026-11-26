@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Overview</title><link rel="stylesheet" href="../../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://developers.google.com/machine-learning/gan/gan_structure" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../../explainers/GANs_HL/Google_GAN_01_Overview.md">Raw file</a><a class="topcta" href="../../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Overview</h1><p class="licence">From Google for Developers, licensed CC BY 4.0.</p><p><img src="https://developers.google.com/_static/images/icons/spark.svg" alt="Spark icon" /></p>
+<h2 id="page-summary">Page Summary</h2>
+<p>outlined_flag</p>
+<ul>
+<li><p>GANs consist of two neural networks: a generator creating data and a discriminator evaluating its authenticity.</p></li>
+<li><p>The generator and discriminator are trained against each other, with the generator aiming to produce realistic data and the discriminator aiming to identify fake data.</p></li>
+<li><p>Through continuous training, the generator improves its ability to create realistic data, while the discriminator struggles more with differentiation.</p></li>
+<li><p>The ultimate goal is for the generator to create data so realistic that the discriminator cannot distinguish it from real data.</p></li>
+</ul>
+<p>A generative adversarial network (GAN) has two parts:</p>
+<ul>
+<li>The <strong>generator</strong> learns to generate plausible data. The generated instances become negative training examples for the discriminator.</li>
+<li>The <strong>discriminator</strong> learns to distinguish the generator's fake data from real data. The discriminator penalizes the generator for producing implausible results.</li>
+</ul>
+<p>When training begins, the generator produces obviously fake data, and the discriminator quickly learns to tell that it's fake:</p>
+<p><img src="https://developers.google.com/static/machine-learning/gan/images/bad_gan.svg" alt="Three columns are labeled &#39;Generated Data&#39;, &#39;Discriminator&#39;, and Real Data&#39;. Under &#39;Generated Data&#39; a blue rectangle contains a squiggle and a circle. The rectangle is the generator&#39;s first, bad attempt to draw a dollar bill. Under &#39;Real Data&#39; there&#39;s a picture of a real ten dollar bill. Under &#39;Discriminator&#39; are the words &#39;FAKE&#39; and &#39;REAL&#39;. An arrow points from the word &#39;FAKE&#39; to the picture under &#39;Generated Data&#39;. Another arrow points from the word &#39;REAL&#39; to the picture under &#39;Real Data&#39;." /></p>
+<p>As training progresses, the generator gets closer to producing output that can fool the discriminator:</p>
+<p><img src="https://developers.google.com/static/machine-learning/gan/images/ok_gan.svg" alt="This image adds a new row under the &#39;Generated Data&#39;, &#39;Discriminator&#39;, and &#39;Real Data&#39; headings in the previous image. Under &#39;Generated Data&#39; there is a green rectangle with the number 10 in the upper left corner and a simple drawing of a face. Under &#39;Real Data&#39; there&#39;s a picture of a real 100 dollar bill. Under &#39;Discriminator&#39; is the word &#39;FAKE&#39; with an arrow pointing to the picture under &#39;Generated Data&#39; and the word &#39;REAL&#39; with an arrow pointing to the picture under &#39;Real Data&#39;. " /></p>
+<p>Finally, if generator training goes well, the discriminator gets worse at telling the difference between real and fake. It starts to classify fake data as real, and its accuracy decreases.</p>
+<p><img src="https://developers.google.com/static/machine-learning/gan/images/good_gan.svg" alt="This image adds a new row under the &#39;Generated Data&#39;, &#39;Discriminator&#39;, and &#39;Real Data&#39; headings in first previous image. Under &#39;Generated Data&#39; there is a picture of a twenty dollar bill. Under &#39;Real Data there&#39;s a picture of a twenty dollar bill. Under &#39;Discriminator&#39; is the word &#39;REAL&#39; with an arrow pointing to the picture under &#39;Generated Data&#39; and the word &#39;REAL&#39; with an arrow pointing to the picture under &#39;Real Data&#39;." /></p>
+<p>Here's a picture of the whole system:</p>
+<p><img src="https://developers.google.com/static/machine-learning/gan/images/gan_diagram.svg" alt="A diagram of a generative adversarial network. At the center of the diagram is a box labeled &#39;discriminator&#39;. Two branches feed into this box from the left. The top branch starts at the upper left of the diagram with a cylinder labeled &#39;real world images&#39;. An arrow leads from this cylinder to a box labeled &#39;Sample&#39;. An arrow from the box labeled &#39;Sample&#39; feeds into the &#39;Discriminator&#39; box. The bottom branch feeds into the &#39;Discriminator&#39; box starting with a box labeled &#39;Random Input&#39;. An arrow leads from the &#39;Random Input&#39; box to a box labeled &#39;Generator&#39;. An arrow leads from the &#39;Generator&#39; box to a second &#39;Sample&#39; box. An arrow leads from the &#39;Sample&#39; box to the &#39;Discriminator box. On the right side of the Discriminator box, an arrow leads to a box containing a green circle and a red circle. The word &#39;Real&#39; appears in green text above the box and the word &#39;False&#39; appears in red below the box. Two arrows lead from this box to two boxes on the right side of the diagram. One arrow leads to a box labeled &#39;Discriminator loss&#39;. The other arrow leads to a box labeled &#39;Generator loss&#39;." /></p>
+<p>Both the generator and the discriminator are neural networks. The generator output is connected directly to the discriminator input. Through <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/glossary#backpropagation">backpropagation</a>, the discriminator's classification provides a signal that the generator uses to update its weights.</p>
+<p>Let's explain the pieces of this system in greater detail.</p>
+</main></body></html>

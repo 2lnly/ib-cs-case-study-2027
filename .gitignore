@@ -1,0 +1,19 @@
+# Downloaded third-party material: kept on this computer, not published.
+# docs/ hosts the openly licensed parts; the site links to everything else.
+/official/
+/study_guides/
+/explainers/
+/ethics_legal/
+/wikipedia_quickref/
+
+# The local site links to the folders above; docs/ is the published build.
+/index.html
+/site/pages/
+
+# The editable app's saved content, revisions, notes and uploads
+/app/data/
+/uploads/
+/backups/
+
+__pycache__/
+.DS_Store

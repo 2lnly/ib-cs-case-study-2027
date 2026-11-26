@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mock Paper 1 Section B papers</title><link rel="stylesheet" href="../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../index.html">← A Diffuse Vision</a>
+<nav><a href="../../../question_bank/03_mock_section_B_papers.md">Raw file</a><a class="topcta" href="../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Mock Paper 1 Section B papers</h1><p>These are four timed mocks: two SL and two HL. They follow the expected format, with <strong>three case-study questions</strong> worth <strong>12 marks (SL)</strong> or <strong>24 marks (HL)</strong>: short answers first, then one extended response. The questions are new; they don't repeat the question bank.</p>
+<p><strong>How to sit them:</strong></p>
+<ol type="1">
+<li>Use a clean copy of the case study booklet and nothing else.</li>
+<li>Set a timer: <strong>18 minutes for SL</strong>, <strong>36 minutes for HL</strong>.</li>
+<li>Write by hand, on paper. Typing makes answers longer than you'll manage in the exam.</li>
+<li>Mark with the harsh rules in <code>01_how_section_B_is_marked.md</code>. Each mark scheme also lists what weak answers did, the way an examiner's report would.</li>
+</ol>
+<p>Questions are numbered 5–7, as if Section A were questions 1–4. The real numbering may differ.</p>
+<hr />
+<h2 id="sl-mock-1-12-marks-18-minutes">SL Mock 1 (12 marks, 18 minutes)</h2>
+<p><strong>5.</strong> Identify <strong>two</strong> examples of inputs, other than a text prompt, that a conditional image generation model could use. <strong>[2]</strong></p>
+<p><strong>6.</strong> Explain how noise injection is used when a diffusion model is being <em>trained</em>. <strong>[4]</strong></p>
+<p><strong>7.</strong> Visionary Studios wants to fine-tune a diffusion model on a client's brand style using images collected from the internet. Discuss whether it should do this. <strong>[6]</strong></p>
+<details>
+<summary>Mark scheme: SL Mock 1</summary>
+
+<p><strong>Q5 [2].</strong> Any two, [1] each: class label, sketch, segmentation map, reference/product photo, depth map, pose, edge map.</p>
+<ul>
+<li><em>Weak answers wrote:</em> "a picture" and "an image" (counted once), or "a prompt" (excluded by the question).</li>
+</ul>
+<p><strong>Q6 [4].</strong> Up to [4]:</p>
+<ul>
+<li>A real training image is taken and a random noise level/step is chosen [1].</li>
+<li>A known amount of random (Gaussian) noise is added to it [1].</li>
+<li>The network is given the noisy image and must predict the noise that was added [1].</li>
+<li>The prediction error is used to update the weights, so the model learns to remove noise at every level [1].</li>
+<li><em>Weak answers</em> described <em>generation</em> (starting from pure noise), which is not what was asked. Max [1] for that.</li>
+</ul>
+<p><strong>Q7 [6] markband.</strong> Indicative content:</p>
+<ul>
+<li><strong>For:</strong>
+<ul>
+<li>Internet images give lots of examples of styles, so fine-tuning is quick and cheap.</li>
+<li>It gives better style adherence and saves designers' time.</li>
+</ul></li>
+<li><strong>Against:</strong>
+<ul>
+<li>Public ≠ licensed (copyright, terms of service).</li>
+<li>The client's brand assets may be mixed with competitors' or artists' work.</li>
+<li>Possible near-copies in outputs.</li>
+<li>Bias in whatever was collected.</li>
+<li>Legal action and reputational risk land on the <em>client</em>.</li>
+</ul></li>
+<li><strong>Better alternative:</strong> fine-tune on the client's <em>own</em> approved brand assets plus licensed images, with provenance recorded.</li>
+<li><strong>Conclusion:</strong> No, not with general internet images. Yes, with client-supplied and licensed material.</li>
+<li><em>To reach 5–6:</em> both sides, applied to the studio and client, with at least one piece of research (e.g., Getty v Stability; US Copyright Office) and a conclusion.</li>
+<li><em>Common cap:</em> a one-sided "it's illegal" answer, max 4.</li>
+</ul>
+</details>
+
+<hr />
+<h2 id="sl-mock-2-12-marks-18-minutes">SL Mock 2 (12 marks, 18 minutes)</h2>
+<p><strong>5.</strong> Outline what is meant by <em>character consistency</em>. <strong>[2]</strong></p>
+<p><strong>6.</strong> Visionary Studios wants to produce low-resolution drafts with fewer denoising steps before producing final images. Explain why this workflow reduces the computational demands of using a diffusion model. <strong>[4]</strong></p>
+<p><strong>7.</strong> To what extent can Visionary Studios ensure that its AI-generated advertising images are free from bias? <strong>[6]</strong></p>
+<details>
+<summary>Mark scheme: SL Mock 2</summary>
+
+<p><strong>Q5 [2].</strong></p>
+<ul>
+<li>The same recurring character or motif [1]</li>
+<li>looks uniform (face, clothing, colours) across many different images and scenes in a campaign [1].</li>
+<li><em>Weak answers</em> described "consistent quality" or style. That's a different factor: [0].</li>
+</ul>
+<p><strong>Q6 [4].</strong> Up to [4]:</p>
+<ul>
+<li>Each denoising step is a full pass of the network, so fewer steps means less computation per draft [1].</li>
+<li>Lower resolution means fewer pixel values per step, so each step is cheaper and uses less GPU memory [1].</li>
+<li>Many drafts can be generated and reviewed quickly, and only the chosen few are rendered at full quality [1].</li>
+<li>So the expensive high-step, high-resolution generation is spent only on approved images, cutting total time and cost [1].</li>
+<li><em>Weak answers</em> said "it's faster" four times in different words: [1].</li>
+</ul>
+<p><strong>Q7 [6] markband.</strong> Indicative content:</p>
+<ul>
+<li><strong>Can reduce bias:</strong>
+<ul>
+<li>Curate and rebalance training data.</li>
+<li>Audit outputs from neutral prompts across demographics.</li>
+<li>Diverse human review before delivery.</li>
+<li>Clear prompt guidelines.</li>
+</ul></li>
+<li><strong>Cannot fully ensure:</strong>
+<ul>
+<li>The base model was trained on data the studio didn't choose (e.g., LAION-scale web data).</li>
+<li>Bias also comes from captions and prompts.</li>
+<li>"Unbiased" is contested.</li>
+<li>Over-correction causes new errors (Gemini, 2024).</li>
+<li>Bias research (Bianchi 2023; "Stable Bias" 2023) shows it is persistent.</li>
+</ul></li>
+<li><strong>Judgement:</strong> "to a limited extent". The studio can <em>reduce and manage</em> bias, not guarantee its absence, so ongoing auditing and human review are essential.</li>
+<li><em>Common cap:</em> a list of mitigations with no "extent" judgement, max 4.</li>
+</ul>
+</details>
+
+<hr />
+<h2 id="hl-mock-1-24-marks-36-minutes">HL Mock 1 (24 marks, 36 minutes)</h2>
+<p><strong>5.</strong> (a) Define <em>mode collapse</em>. <strong>[2]</strong> (b) Outline why diffusion models are less affected by mode collapse than GANs. <strong>[2]</strong></p>
+<p><strong>6.</strong> (a) Explain how the discriminator's output is used to improve the generator during GAN training. <strong>[4]</strong> (b) Outline <strong>two</strong> ways Visionary Studios could reduce the risk of its model reproducing copyrighted images. <strong>[4]</strong></p>
+<p><strong>7.</strong> Evaluate whether a hybrid model combining a variational autoencoder (VAE) with a diffusion model would meet Visionary Studios' needs better than a GAN. <strong>[12]</strong></p>
+<details>
+<summary>Mark scheme: HL Mock 1</summary>
+
+<p><strong>Q5(a) [2].</strong></p>
+<ul>
+<li>The generator produces only a narrow range of similar outputs [1]</li>
+<li>instead of the full diversity of the training data, because those outputs fool the discriminator [1].</li>
+</ul>
+<p><strong>Q5(b) [2].</strong></p>
+<ul>
+<li>A diffusion model is trained to denoise <em>every</em> training image at every noise level, with no adversary to fool [1]</li>
+<li>so it must model the whole data distribution; there's no reward for settling on a few outputs [1].</li>
+</ul>
+<p><strong>Q6(a) [4].</strong> Up to [4]:</p>
+<ul>
+<li>Generated images are passed to the discriminator, which outputs the probability that each is real [1].</li>
+<li>The generator's loss is high when the discriminator judges its images fake [1].</li>
+<li>Gradients of this loss are backpropagated through the discriminator into the generator [1].</li>
+<li>The generator's weights are updated to make its images more likely to be judged real; the two networks alternate updates [1].</li>
+<li><em>Weak answers</em> said the generator "compares its output with real images": [0] for that point.</li>
+</ul>
+<p><strong>Q6(b) [4].</strong> Two ways, [1] + [1] expansion each:</p>
+<ul>
+<li>de-duplicate training data (memorisation is strongest for duplicates);</li>
+<li>train only on licensed or owned images;</li>
+<li>check outputs by similarity / reverse-image search before delivery;</li>
+<li>block prompts naming specific artists or brands;</li>
+<li>human legal review of final assets.</li>
+</ul>
+<p><strong>Q7 [12] markband.</strong> Indicative content:</p>
+<ul>
+<li><strong>The VAE + diffusion hybrid (= latent diffusion / Stable Diffusion):</strong>
+<ul>
+<li>The VAE compresses images, so diffusion runs on a small latent: much cheaper per step.</li>
+<li>Keeps diffusion's quality, diversity and stable training.</li>
+<li>Flexible conditioning (text, sketches) and good consistency tools.</li>
+<li>The VAE latent supports exploring variations.</li>
+<li><strong>But:</strong> still several steps (slower than a GAN); autoencoder artefacts in fine detail; more components.</li>
+</ul></li>
+<li><strong>GAN:</strong>
+<ul>
+<li>Single-pass speed and sharpness.</li>
+<li><strong>But:</strong> instability, mode collapse (bad for varied campaigns), weaker text control, costly failed training runs.</li>
+</ul></li>
+<li><strong>Weigh against the booklet's five factors:</strong> the hybrid wins on quality, stability, flexibility and consistency; the GAN wins only on speed. Speed can be recovered with few-step samplers or distillation.</li>
+<li><strong>Research:</strong> Rombach et al. 2022; Dhariwal &amp; Nichol 2021; the trilemma (Xiao et al. 2022); DDIM; WGAN-GP for the GAN side.</li>
+<li><strong>Conclusion:</strong> the hybrid is better for most of the studio's work. A GAN only for a narrow, high-volume, single-style task.</li>
+<li><em>To reach 10–12:</em> explicit criteria, both models' weaknesses, real research explained, and a conditional conclusion. <em>Recognising that Stable Diffusion already is this hybrid</em> is a strong sign of research.</li>
+<li><em>Common caps:</em> describing each model in turn without weighing (6); no limitations of the hybrid (6).</li>
+</ul>
+</details>
+
+<hr />
+<h2 id="hl-mock-2-24-marks-36-minutes">HL Mock 2 (24 marks, 36 minutes)</h2>
+<p><strong>5.</strong> (a) Define <em>latent space</em>. <strong>[2]</strong> (b) Outline the purpose of the <em>D-dimensional noise vector</em> in a GAN. <strong>[2]</strong></p>
+<p><strong>6.</strong> (a) Explain how training a diffusion model differs from training a GAN. <strong>[4]</strong> (b) Explain why a flow-based model can trace how a generated image was formed, but a GAN generally cannot. <strong>[4]</strong></p>
+<p><strong>7.</strong> To what extent should training stability be the deciding factor in Visionary Studios' choice between a diffusion model and a GAN? <strong>[12]</strong></p>
+<details>
+<summary>Mark scheme: HL Mock 2</summary>
+
+<p><strong>Q5(a) [2].</strong></p>
+<ul>
+<li>A compressed, lower-dimensional representation where each image is a point/vector [1]</li>
+<li>and similar images lie close together, so moving through the space changes images smoothly [1].</li>
+</ul>
+<p><strong>Q5(b) [2].</strong></p>
+<ul>
+<li>It supplies the randomness that makes each generated image different [1]</li>
+<li>and acts as a latent space: nearby vectors give similar images, allowing interpolation and variation [1].</li>
+</ul>
+<p><strong>Q6(a) [4].</strong> Up to [4], must refer to both:</p>
+<ul>
+<li>A diffusion model trains <strong>one</strong> network; a GAN trains <strong>two</strong> networks (generator and discriminator) [1].</li>
+<li>The diffusion objective is a fixed regression target: predict the added noise (e.g., mean squared error) [1].</li>
+<li>A GAN's objective is adversarial: each network's target moves as the other improves [1].</li>
+<li>So diffusion training is stable and predictable, whereas GAN training needs careful balancing and can oscillate or collapse [1].</li>
+</ul>
+<p><strong>Q6(b) [4].</strong></p>
+<ul>
+<li>A flow-based model is built from invertible transformations [1]</li>
+<li>so running it backwards maps an image to the exact noise vector that created it, and that vector regenerates the same image [1].</li>
+<li>A GAN's generator only maps noise to image; it has no inverse or encoder [1]</li>
+<li>so recovering the input requires slow, approximate search and may not find an exact match [1].</li>
+</ul>
+<p><strong>Q7 [12] markband.</strong> Indicative content:</p>
+<ul>
+<li><strong>Why stability matters:</strong>
+<ul>
+<li>Failed or collapsed GAN runs waste GPU time on limited infrastructure.</li>
+<li>Unpredictable outputs threaten deadlines.</li>
+<li>Mode collapse ruins variety.</li>
+<li>Diffusion's simple objective trains reliably (supports choosing diffusion).</li>
+</ul></li>
+<li><strong>Why it shouldn't be the <em>only</em> factor:</strong>
+<ul>
+<li>The studio will mostly fine-tune pre-trained models, so stability matters less than <em>generation</em> efficiency.</li>
+<li>GANs win on speed per image.</li>
+<li>Output quality, consistency and flexibility (text conditioning) also matter, as do ethical and data constraints, which are the same for both.</li>
+<li>GAN stabilisers (WGAN-GP, spectral normalisation) narrow the stability gap.</li>
+</ul></li>
+<li><strong>Weighing:</strong> stability is a <em>threshold</em> criterion (an unreliable model is unusable), but once both are reliable enough, quality, flexibility and cost decide.</li>
+<li><strong>Research:</strong> Goodfellow 2014; Arjovsky / Gulrajani 2017; Miyato 2018; Ho et al. 2020; Dhariwal &amp; Nichol 2021.</li>
+<li><strong>Conclusion example:</strong> "Training stability should not be the deciding factor on its own. It rules out an unmodified GAN for varied work, but diffusion should be chosen mainly for its quality and flexibility, with its computational cost managed by efficient sampling."</li>
+<li><em>Common caps:</em> answering "which model is better" without addressing <em>"to what extent should stability decide"</em> (6–7 max: it misses the question); no research (9).</li>
+</ul>
+</details>
+</main></body></html>

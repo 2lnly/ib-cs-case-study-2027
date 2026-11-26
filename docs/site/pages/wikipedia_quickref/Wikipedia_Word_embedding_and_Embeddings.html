@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Word embedding and Embeddings</title><link rel="stylesheet" href="../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><header class="bar"><a class="home" href="../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://en.wikipedia.org/wiki/Embedding_(machine_learning)" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../wikipedia_quickref/Wikipedia_Word_embedding_and_Embeddings.md">Raw file</a><a class="topcta" href="../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Word embedding and Embeddings</h1><p class="licence">Text from Wikipedia, licensed CC BY-SA 4.0.</p><p>Representation learning technique</p>
+<p>In <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Machine_learning" title="Machine learning">machine learning</a>, <strong>embedding</strong> is a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Representation_learning" title="Representation learning">representation learning</a> technique that maps complex, high-dimensional data into a lower-dimensional <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Vector_space" title="Vector space">vector space</a> of numerical vectors.^(<a href="#cite_note-Bengio2003-1">[1]</a>)</p>
+<h2 id="technique">Technique</h2>
+<p>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;action=edit&amp;section=1" title="Edit section: Technique">edit</a>]</p>
+<p>It also denotes the resulting representation, where meaningful patterns or relationships are preserved. As a technique, it learns these vectors from data like words, images, or user interactions, differing from manually designed methods such as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/One-hot_encoding" title="One-hot encoding">one-hot encoding</a>.^(<a href="#cite_note-Mikolov2013-2">[2]</a>) This process reduces complexity and captures key features without needing prior knowledge of the domain.</p>
+<h2 id="similarity">Similarity</h2>
+<p>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;action=edit&amp;section=2" title="Edit section: Similarity">edit</a>]</p>
+<p>In <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Natural_language_processing" title="Natural language processing">natural language processing</a>, words or concepts may be represented as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Feature_(machine_learning)#Feature_vectors" title="Feature (machine learning)">feature vectors</a>, where similar concepts are mapped to nearby vectors. The resulting embeddings vary by type, including <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Word_embedding" title="Word embedding">word embeddings</a> for text (e.g., <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Word2Vec" title="Word2Vec">Word2Vec</a>), image embeddings for visual data, and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Knowledge_graph_embedding" title="Knowledge graph embedding">knowledge graph embeddings</a> for <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Knowledge_graph" title="Knowledge graph">knowledge graphs</a>, each tailored to tasks like natural language processing, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Computer_vision" title="Computer vision">computer vision</a>, or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Recommendation_systems" title="Recommendation systems">recommendation systems</a>.^(<a href="#cite_note-3">[3]</a>) This dual role enhances model efficiency and accuracy by automating feature extraction and revealing latent similarities across diverse applications.</p>
+<p>To measure the distance between two embeddings, a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Similarity_measure" title="Similarity measure">similarity measure</a> can be used to find the overall similarity of the concepts represented by the embeddings. If the vectors are normalized to have a magnitude of 1, then the similarity measures are proportional to <span class="math inline">\(\cos\left( \theta_{ab} \right)\)</span>.^(<a href="#cite_note-googleml-4">[4]</a>)</p>
+<table>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Meaning</td>
+<td>Formula</td>
+<td>Formula (Scalar)</td>
+<td>Similarity Correlation</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Euclidean_distance" title="Euclidean distance">Euclidean Distance</a></td>
+<td>Distance between ends of vectors</td>
+<td>$</td>
+<td>a - b</td>
+<td>$</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cosine_similarity" title="Cosine similarity">Cosine Similarity</a></td>
+<td>Cosine of angle <span class="math inline">\(\theta\)</span> between vectors</td>
+<td>$\frac{a \cdot b}{</td>
+<td>a</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dot_product" title="Dot product">Dot Product</a></td>
+<td>Cosine similarity multiplied by the lengths of both vectors</td>
+<td><span class="math inline">\(a \cdot b\)</span></td>
+<td><span class="math inline">\(\sum a_{n}b_{n}\)</span></td>
+<td>Positive Correlation</td>
+</tr>
+</tbody>
+</table>
+<p>Similarity Measures {#mwKQ}</p>
+<p>The cosine similarity disregards the magnitude of the vector when determining similarity, so it is less biased towards training data that appears very frequently. The dot product includes the magnitude inherently, so it will tend to value more popular data.^(<a href="#cite_note-googleml-4">[4]</a>) Generally, for high-dimensional vector spaces, vectors tend to converge in distance, so Euclidean distance becomes less reliable for large embedding vectors.^(<a href="#cite_note-5">[5]</a>)</p>
+<h2 id="see-also">See also</h2>
+<p>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;action=edit&amp;section=3" title="Edit section: See also">edit</a>]</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Latent_space" title="Latent space">Latent space</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Feature_extraction" title="Feature extraction">Feature extraction</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dimensionality_reduction" title="Dimensionality reduction">Dimensionality reduction</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Word_embedding" title="Word embedding">Word embedding</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)" title="Neural network (machine learning)">Neural network</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Reinforcement_learning" title="Reinforcement learning">Reinforcement learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Metric_space#Metric_embeddings_and_approximations" title="Metric space">Metric space#Metric embeddings and approximations</a></li>
+</ul>
+<h2 id="references">References</h2>
+<p>[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;action=edit&amp;section=4" title="Edit section: References">edit</a>]</p>
+<ol type="1">
+<li><a href="#cite_ref-Bengio2003_1-0">↑</a> Bengio, Yoshua; Ducharme, Réjean; Vincent, Pascal (2003). "A Neural Probabilistic Language Model". <em>Journal of Machine Learning Research</em>. <strong>3</strong>: 1137–1155.</li>
+<li><a href="#cite_ref-Mikolov2013_2-0">↑</a> Mikolov, Tomas; Chen, Kai; Corrado, Greg; Dean, Jeffrey (2013). <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1301.3781"><em>Efficient Estimation of Word Representations in Vector Space</em></a>. International Conference on Learning Representations (ICLR).</li>
+<li><a href="#cite_ref-3">↑</a> <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/what-are-embeddings-in-machine-learning/">"What are Embedding in Machine Learning?"</a>. <em>GeeksforGeeks</em>. 2024-02-15. Retrieved 2025-02-28.</li>
+<li><a href="#cite_ref-googleml_4-0">1</a> <a href="#cite_ref-googleml_4-1">2</a> <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/clustering/dnn-clustering/supervised-similarity">"Measuring similarity from embeddings"</a>. <em>Google Machine Learning Education</em>. Retrieved 21 September 2025.</li>
+<li><a href="#cite_ref-5">↑</a> Krantz, Tom; Jonker, Alexandra. <a target="_blank" rel="noopener" href="https://www.ibm.com/think/topics/cosine-similarity#:~:text=However,retrieval">"What is cosine similarity?"</a>. <em>IBM Think</em>. Retrieved 21 September 2025.</li>
+</ol>
+<p><img src="https://en.wikipedia.org/wiki/Special:CentralAutoLogin/start?useformat=desktop&amp;type=1x1&amp;usesul3=1" /></p>
+<p>Retrieved from "[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?title=Embedding\_(machine_learning)&amp;oldid=1375060623](https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;oldid=1375060623)">https://en.wikipedia.org/w/index.php?title=Embedding\_(machine_learning)&amp;oldid=1375060623](https://en.wikipedia.org/w/index.php?title=Embedding_(machine_learning)&amp;oldid=1375060623)</a>"</p>
+</main></body></html>

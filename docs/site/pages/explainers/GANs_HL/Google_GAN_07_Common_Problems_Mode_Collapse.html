@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Common Problems Mode Collapse</title><link rel="stylesheet" href="../../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://developers.google.com/machine-learning/gan/problems" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../../explainers/GANs_HL/Google_GAN_07_Common_Problems_Mode_Collapse.md">Raw file</a><a class="topcta" href="../../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Common Problems Mode Collapse</h1><p class="licence">From Google for Developers, licensed CC BY 4.0.</p><p><img src="https://developers.google.com/_static/images/icons/spark.svg" alt="Spark icon" /></p>
+<h2 id="page-summary">Page Summary</h2>
+<p>outlined_flag</p>
+<ul>
+<li><p>GANs suffer from common failure modes like vanishing gradients, mode collapse, and failure to converge, all of which are areas of active research.</p></li>
+<li><p>Vanishing gradients occur when a discriminator becomes too good, hindering the generator's progress, and can be addressed with techniques like Wasserstein loss or modified minimax loss.</p></li>
+<li><p>Mode collapse happens when a generator repeatedly produces the same or similar outputs, and solutions include using Wasserstein loss or unrolled GANs to encourage output diversity.</p></li>
+<li><p>Failure to converge is a common issue, and researchers are exploring regularization methods such as adding noise to discriminator inputs or penalizing discriminator weights to improve stability.</p></li>
+</ul>
+<p>GANs have a number of common failure modes. All of these common problems are areas of active research. While none of these problems have been completely solved, we'll mention some things that people have tried.</p>
+<h2 id="vanishing-gradients">Vanishing Gradients</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1701.04862.pdf">Research</a> has suggested that if your discriminator is too good, then generator training can fail due to <a target="_blank" rel="noopener" href="https://wikipedia.org/wiki/Vanishing_gradient_problem">vanishing gradients</a>. In effect, an optimal discriminator doesn't provide enough information for the generator to make progress.</p>
+<h3 id="attempts-to-remedy">Attempts to Remedy</h3>
+<ul>
+<li><strong>Wasserstein loss</strong>: The <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/gan/loss">Wasserstein loss</a> is designed to prevent vanishing gradients even when you train the discriminator to optimality.</li>
+<li><strong>Modified minimax loss</strong>: The <a target="_blank" rel="noopener" href="http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf">original GAN paper</a> proposed a <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/gan/loss">modification to minimax loss</a> to deal with vanishing gradients.</li>
+</ul>
+<h2 id="mode-collapse">Mode Collapse</h2>
+<p>Usually you want your GAN to produce a wide variety of outputs. You want, for example, a different face for every random input to your face generator.</p>
+<p>However, if a generator produces an especially plausible output, the generator may learn to produce <em>only</em> that output. In fact, the generator is always trying to find the one output that seems most plausible to the discriminator.</p>
+<p>If the generator starts producing the same output (or a small set of outputs) over and over again, the discriminator's best strategy is to learn to always reject that output. But if the next generation of discriminator gets stuck in a local minimum and doesn't find the best strategy, then it's too easy for the next generator iteration to find the most plausible output for the current discriminator.</p>
+<p>Each iteration of generator over-optimizes for a particular discriminator, and the discriminator never manages to learn its way out of the trap. As a result the generators rotate through a small set of output types. This form of GAN failure is called <strong>mode collapse</strong>.</p>
+<h3 id="attempts-to-remedy-1">Attempts to Remedy</h3>
+<p>The following approaches try to force the generator to broaden its scope by preventing it from optimizing for a single fixed discriminator:</p>
+<ul>
+<li><strong>Wasserstein loss</strong>: The <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/gan/loss">Wasserstein loss</a> alleviates mode collapse by letting you train the discriminator to optimality without worrying about vanishing gradients. If the discriminator doesn't get stuck in local minima, it learns to reject the outputs that the generator stabilizes on. So the generator has to try something new.</li>
+<li><strong>Unrolled GANs</strong>: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1611.02163.pdf">Unrolled GANs</a> use a generator loss function that incorporates not only the current discriminator's classifications, but also the outputs of future discriminator versions. So the generator can't over-optimize for a single discriminator.</li>
+</ul>
+<h2 id="failure-to-converge">Failure to Converge</h2>
+<p>GANs frequently fail to converge, as discussed in the module on <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/gan/training">training</a>.</p>
+<h3 id="attempts-to-remedy-2">Attempts to Remedy</h3>
+<p>Researchers have tried to use various forms of regularization to improve GAN convergence, including:</p>
+<ul>
+<li><strong>Adding noise to discriminator inputs</strong>: See, for example, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1701.04862.pdf">Toward Principled Methods for Training Generative Adversarial Networks</a>.</li>
+<li><strong>Penalizing discriminator weights</strong>: See, for example, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1705.09367.pdf">Stabilizing Training of Generative Adversarial Networks through Regularization</a>.</li>
+</ul>
+</main></body></html>

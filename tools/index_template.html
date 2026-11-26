@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Diffuse Vision</title>
+<link rel="stylesheet" href="site/style.css?v={{CSSV}}">
+{{THEME_SCRIPT}}
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="#top">A DIFFUSE VISION</a>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#library">Library</a>
+    <a class="topcta" href="site/pages/question_bank/02_question_bank.html">Questions</a>
+    <button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button>
+  </nav>
+</header>
+
+<div class="wrap" id="top">
+  <section class="hero">
+    <p class="kicker">IB Computer Science · Case study · May &amp; November 2027</p>
+    <h1>Generative AI for image creation: a diffuse vision</h1>
+    <p class="lede">Everything collected for the Visionary Studios case study: the official booklet and subject brief, study guides, explainers, the original research papers, and the ethics and legal sources. {{TOTAL}} items: {{STORAGE}}</p>
+    <div class="cta-row">
+      <a class="cta primary" href="site/pages/question_bank/02_question_bank.html">Practice questions →</a>
+      <a class="cta" href="site/pages/question_bank/03_mock_section_B_papers.html">Mock papers</a>
+      <a class="cta" href="site/pages/question_bank/01_how_section_B_is_marked.html">How it's marked</a>
+    </div>
+  </section>
+
+  <h2 class="sec" id="overview">Overview <span>from the booklet &amp; subject brief</span></h2>
+  <div class="scenario">
+    <div>
+      <p><b>Visionary Studios</b> is a creative design company. It is evaluating generative AI to produce high-quality images for <b>advertising campaigns, concept art and digital media</b>, and is weighing <b>diffusion models</b>, <b>GANs</b> and <b>hybrid models</b> against each other.</p>
+      <p>The company assesses each model on five factors: <b>output quality</b>, <b>computational efficiency</b>, <b>training stability</b>, <b>flexibility and scalability</b>, and <b>consistency</b> (character consistency and style adherence).</p>
+    </div>
+    <div>
+      <p>It also has to handle three ethical and legal concerns:</p>
+      <ol>
+        <li><b>Dataset curation:</b> avoid copyrighted material and respect intellectual property law.</li>
+        <li><b>Bias and fairness:</b> check datasets for bias that leads to exclusionary or inaccurate outputs.</li>
+        <li><b>Transparency and AI disclosure:</b> set clear rules for disclosing AI-generated content.</li>
+      </ol>
+      <p class="note">The GAN section (booklet lines 48–59) and the hybrid models section (lines 60–75) are HL only.</p>
+    </div>
+  </div>
+
+  <div class="facts" style="margin-top:28px">
+    <div class="fact"><b>Paper 1</b><span>Section B holds the case study, for both SL and HL</span></div>
+    <div class="fact"><b>3 questions</b><span>on the case study in Paper 1 (subject brief)</span></div>
+    <div class="fact"><b>1h15 · 35%</b><span>SL Paper 1 time and weighting</span></div>
+    <div class="fact"><b>2h · 40%</b><span>HL Paper 1 time and weighting</span></div>
+    <div class="fact"><b>15h / 30h</b><span>recommended teaching hours, SL / HL</span></div>
+  </div>
+  <p class="note">RevisionDojo says the case study is worth 12 marks at SL and 24 at HL. The IB documents here don't state marks, so treat that figure as unofficial.</p>
+
+  <h2 class="sec" id="challenges">The four challenges <span>SL: 1–2 · HL: 1–4</span></h2>
+  <div class="challenges">
+    <div class="ch">
+      <div class="num">1</div><div><span class="tag">SL</span><span class="tag tag-hl">HL</span></div>
+      <h3>Managing the iterative denoising process in diffusion models and its computational demands</h3>
+      <p>Many denoising steps mean slow, expensive generation. Research step reduction (DDIM, distillation, consistency models) and latent diffusion.</p>
+      <a class="go" href="#explainers-diffusion">Diffusion explainers →</a>
+      <a class="go" href="#papers-01_diffusion">Diffusion papers →</a>
+    </div>
+    <div class="ch">
+      <div class="num">2</div><div><span class="tag">SL</span><span class="tag tag-hl">HL</span></div>
+      <h3>The ethics of training on large datasets: intellectual property and bias mitigation</h3>
+      <p>Copyright of training data, memorisation, bias in outputs, disclosure and content credentials.</p>
+      <a class="go" href="#ethics_legal">Ethics and law →</a>
+      <a class="go" href="#papers-08_ethics_legal">Ethics papers →</a>
+    </div>
+    <div class="ch hl">
+      <div class="num">3</div><div><span class="tag tag-hl">HL</span></div>
+      <h3>Balancing generator and discriminator performance in GANs to produce realistic images</h3>
+      <p>The adversarial dynamic, unstable training and mode collapse, plus fixes such as WGAN, spectral normalisation and TTUR.</p>
+      <a class="go" href="#explainers-GANs_HL">GAN explainers →</a>
+      <a class="go" href="#papers-04_GANs_HL">GAN papers →</a>
+    </div>
+    <div class="ch hl">
+      <div class="num">4</div><div><span class="tag tag-hl">HL</span></div>
+      <h3>How a hybrid model could balance the strengths and weaknesses of VAEs, GANs, flows and diffusion</h3>
+      <p>Each model's trade-off between quality, speed, diversity, control and exactness, and how combining them helps.</p>
+      <a class="go" href="#papers-07_hybrid_HL">Hybrid papers →</a>
+      <a class="go" href="#explainers-stanford_cs236">CS236 notes →</a>
+    </div>
+  </div>
+
+  <h2 class="sec" id="glossary">Glossary <span>booklet terminology · plain-language summaries</span></h2>
+  <div class="gloss">
+    <div class="gloss-group">
+      <h4><span class="tag">SL</span><span class="tag tag-hl">HL</span> Both levels</h4>
+      <div class="term"><a href="site/pages/explainers/diffusion/LilianWeng_What_are_Diffusion_Models.html">Diffusion model</a><p>Generates images by starting from random noise and removing it step by step with a trained denoiser.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener">Denoising diffusion probabilistic model (DDPM)</a><p>The framework modern diffusion models build on. It formalises adding noise (forward process) and learning to remove it (reverse process).</p></div>
+      <div class="term"><a href="site/pages/explainers/diffusion/HuggingFace_Annotated_Diffusion_Model.html">Denoising</a><p>One step of predicting and removing noise from an image. Generation repeats this many times.</p></div>
+      <div class="term"><a href="site/pages/explainers/diffusion/JayAlammar_Illustrated_Stable_Diffusion.html">Noise injection</a><p>Introducing random noise: as the starting point for generation, and when corrupting images during training.</p></div>
+      <div class="term"><a href="site/pages/wikipedia_quickref/Wikipedia_Convolutional_neural_network.html">Convolutional neural network (CNN)</a><p>A neural network that uses learned filters over local image regions. It is the usual denoiser, often a U-Net.</p></div>
+      <div class="term"><a href="site/pages/wikipedia_quickref/Wikipedia_Text_to_image_model.html">Text-to-image generation</a><p>Creating images from a written prompt, as in DALL·E and Stable Diffusion.</p></div>
+      <div class="term"><a href="site/pages/explainers/diffusion/SanderDieleman_Guidance_Cheat_Code_for_Diffusion.html">Conditional image generation</a><p>Generation steered by an input such as a class label, sketch, segmentation map or text.</p></div>
+      <div class="term"><a href="site/pages/wikipedia_quickref/Wikipedia_Diffusion_model.html">Unconditional image generation</a><p>Generation with no guiding input, drawing only on patterns learned from the data. Useful for exploration and synthetic datasets.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/1611.07004" target="_blank" rel="noopener">Image-to-image translation</a><p>Turning one kind of image into another, such as sketch to render or greyscale to colour.</p></div>
+      <div class="term"><a href="site/pages/wikipedia_quickref/Wikipedia_Image_segmentation.html">Segmentation map</a><p>An image where every pixel is labelled with a region or class (sky, road, person). It can serve as a layout for generation.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/2208.12242" target="_blank" rel="noopener">Character consistency</a><p>Keeping a recurring character or motif looking the same across many generated images.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/2208.01618" target="_blank" rel="noopener">Embedding-based approach</a><p>Representing a character or style as a learned vector (embedding) that is reused in prompts to keep outputs consistent.</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_07_Common_Problems_Mode_Collapse.html">Training stability</a><p>Whether training converges reliably rather than oscillating, failing or producing repetitive outputs.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/1803.09010" target="_blank" rel="noopener">Dataset curation</a><p>Selecting, filtering and documenting training data, for example to exclude copyrighted or harmful material.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/2303.11408" target="_blank" rel="noopener">Bias mitigation</a><p>Steps to detect and reduce unfair or unrepresentative patterns in data and outputs.</p></div>
+    </div>
+    <div class="gloss-group">
+      <h4><span class="tag tag-hl">HL</span> Higher level only</h4>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_01_Overview.html">Generative adversarial network (GAN)</a><p>Two networks trained against each other: a generator makes fake images and a discriminator tries to spot them.</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_04_Generator.html">Generator</a><p>Turns a random noise vector into a candidate image, and learns by fooling the discriminator.</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_03_Discriminator.html">Discriminator</a><p>A classifier that labels images as real (from the training set) or fake (from the generator).</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/LilianWeng_From_GAN_to_WGAN.html">Adversarial dynamic</a><p>The competition between the two networks. It drives sharp images, but if either side gets too strong, training becomes unstable.</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_04_Generator.html">D-dimensional noise vector</a><p>The generator's input: a list of D random numbers. Each different vector produces a different image.</p></div>
+      <div class="term"><a href="site/pages/explainers/GANs_HL/Google_GAN_07_Common_Problems_Mode_Collapse.html">Mode collapse</a><p>The generator produces only a few kinds of output instead of the full variety in the data.</p></div>
+      <div class="term"><a href="site/pages/explainers/VAE_HL/LilianWeng_From_Autoencoder_to_Beta_VAE.html">Variational autoencoder (VAE)</a><p>Encodes images into a structured latent space and decodes samples from it. Flexible for exploration, but often blurrier.</p></div>
+      <div class="term"><a href="site/pages/wikipedia_quickref/Wikipedia_Latent_space.html">Latent space</a><p>A compressed representation in which similar images sit close together, so moving through it changes the image smoothly.</p></div>
+      <div class="term"><a href="site/pages/explainers/flow_based_HL/LilianWeng_Flow_based_Deep_Generative_Models.html">Flow-based model</a><p>Learns an exact, reversible mapping between noise and images, which makes generation traceable and reproducible.</p></div>
+      <div class="term"><a href="https://arxiv.org/abs/2103.04922" target="_blank" rel="noopener">Hybrid model</a><p>Combines approaches, for example a VAE latent space with diffusion (Stable Diffusion) or a diffusion model with GAN training, to offset each one's weaknesses.</p></div>
+    </div>
+  </div>
+
+  <h2 class="sec" id="library">Library <span>{{TOTAL}} items</span></h2>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search titles and authors… (e.g. mode collapse, DDIM, copyright)" autocomplete="off">
+    <div class="seg" role="group" aria-label="Level filter">
+      <button data-level="all" aria-pressed="true">All</button>
+      <button data-level="sl" aria-pressed="false">SL view</button>
+      <button data-level="hl" aria-pressed="false">HL view</button>
+    </div>
+  </div>
+  <div class="layout">
+    <nav class="toc">{{TOC}}</nav>
+    <div id="lib">{{SECTIONS}}<p class="empty" id="empty">Nothing matches that search.</p></div>
+  </div>
+
+  <footer class="foot">
+    {{FOOTER}}
+  </footer>
+</div>
+
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var level = 'all';
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.lib'));
+  function apply() {
+    var term = q.value.trim().toLowerCase();
+    var any = false;
+    secs.forEach(function (s) {
+      var hasSL = !!s.querySelector('.lib-head .tag:not(.tag-hl)');
+      var hasHL = !!s.querySelector('.lib-head .tag-hl');
+      var tagged = hasSL || hasHL;
+      var levelOk = level === 'all' || !tagged || (level === 'sl' && hasSL) || (level === 'hl' && hasHL);
+      var shown = 0;
+      s.querySelectorAll('.item').forEach(function (it) {
+        var ok = levelOk && (!term || it.getAttribute('data-q').indexOf(term) !== -1);
+        it.classList.toggle('hidden', !ok);
+        if (ok) shown++;
+      });
+      s.classList.toggle('hidden', shown === 0);
+      var link = document.querySelector('.toc a[href="#' + s.id + '"]');
+      if (link) link.classList.toggle('hidden', shown === 0);
+      if (shown) any = true;
+    });
+    document.getElementById('empty').style.display = any ? 'none' : 'block';
+  }
+  q.addEventListener('input', apply);
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      level = b.getAttribute('data-level');
+      document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      apply();
+    });
+  });
+})();
+</script>
+</body>
+</html>

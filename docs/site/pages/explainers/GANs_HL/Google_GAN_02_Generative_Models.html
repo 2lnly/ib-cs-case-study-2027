@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generative Models</title><link rel="stylesheet" href="../../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://developers.google.com/machine-learning/gan/generative" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../../explainers/GANs_HL/Google_GAN_02_Generative_Models.md">Raw file</a><a class="topcta" href="../../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Generative Models</h1><p class="licence">From Google for Developers, licensed CC BY 4.0.</p><p><img src="https://developers.google.com/_static/images/icons/spark.svg" alt="Spark icon" /></p>
+<h2 id="page-summary">Page Summary</h2>
+<p>outlined_flag</p>
+<ul>
+<li><p>Generative models create new data instances, while discriminative models classify existing data.</p></li>
+<li><p>Generative models learn the underlying data distribution, enabling them to generate realistic new samples.</p></li>
+<li><p>Discriminative models focus on distinguishing between data categories by identifying key features.</p></li>
+<li><p>Generative models are generally more complex than discriminative models due to their broader learning task.</p></li>
+<li><p>GANs (Generative Adversarial Networks) are a powerful type of generative model that employ two competing networks for effective training.</p></li>
+</ul>
+<p>What does "generative" mean in the name "Generative Adversarial Network"? "<em>Generative</em>" describes a class of statistical models that contrasts with <em>discriminative</em> models.</p>
+<p>Informally:</p>
+<ul>
+<li><strong>Generative</strong> models can generate new data instances.</li>
+<li><strong>Discriminative</strong> models discriminate between different kinds of data instances.</li>
+</ul>
+<p>A generative model could generate new photos of animals that look like real animals, while a discriminative model could tell a dog from a cat. GANs are just one kind of generative model.</p>
+<p>More formally, given a set of data instances X and a set of labels Y:</p>
+<ul>
+<li><strong>Generative</strong> models capture the joint probability p(X, Y), or just p(X) if there are no labels.</li>
+<li><strong>Discriminative</strong> models capture the conditional probability p(Y | X).</li>
+</ul>
+<p>A generative model includes the distribution of the data itself, and tells you how likely a given example is. For example, models that predict the next word in a sequence are typically generative models (usually much simpler than GANs) because they can assign a probability to a sequence of words.</p>
+<p>A discriminative model ignores the question of whether a given instance is likely, and just tells you how likely a label is to apply to the instance.</p>
+<p>Note that this is a very general definition. There are many kinds of generative model. GANs are just one kind of generative model.</p>
+<h2 id="modeling-probabilities">Modeling Probabilities</h2>
+<p>Neither kind of model has to return a number representing a probability. You can model the distribution of data by imitating that distribution.</p>
+<p>For example, a discriminative classifier like a <a target="_blank" rel="noopener" href="http://wikipedia.org/wiki/Decision_tree_learning">decision tree</a> can label an instance without assigning a probability to that label. Such a classifier would still be a model because the distribution of all predicted labels would model the real distribution of labels in the data.</p>
+<p>Similarly, a generative model can model a distribution by producing convincing "fake" data that looks like it's drawn from that distribution.</p>
+<h2 id="generative-models-are-hard">Generative Models Are Hard</h2>
+<p>Generative models tackle a more difficult task than analogous discriminative models. Generative models have to model <em>more</em>.</p>
+<p>A generative model for images might capture correlations like "things that look like boats are probably going to appear near things that look like water" and "eyes are unlikely to appear on foreheads." These are very complicated distributions.</p>
+<p>In contrast, a discriminative model might learn the difference between "sailboat" or "not sailboat" by just looking for a few tell-tale patterns. It could ignore many of the correlations that the generative model must get right.</p>
+<p>Discriminative models try to draw boundaries in the data space, while generative models try to model how data is placed throughout the space. For example, the following diagram shows discriminative and generative models of handwritten digits:</p>
+<p><img src="https://developers.google.com/static/machine-learning/gan/images/generative_v_discriminative.png" alt="Two graphs, one labelled &#39;Discriminative Model&#39; and the other labelled &#39;Generative Model&#39;. Both graphs show the same four datapoints. Each point is labeled with the image of the handwritten digit that it represents. In the discriminative graph there&#39;s a dotted line separating two data points from the remaining two. The region above the dotted line is labelled &#39;y=0&#39; and the region below the line is labelled &#39;y=1&#39;. In the generative graph two dotted-line circles are drawn around the two pairs of points. The top circle is labelled &#39;y=0&#39; and the bottom circle is labelled &#39;y=1" /></p>
+<p><strong>Figure 1: Discriminative and generative models of handwritten digits.</strong></p>
+<p>The discriminative model tries to tell the difference between handwritten 0's and 1's by drawing a line in the data space. If it gets the line right, it can distinguish 0's from 1's without ever having to model exactly where the instances are placed in the data space on either side of the line.</p>
+<p>In contrast, the generative model tries to produce convincing 1's and 0's by generating digits that fall close to their real counterparts in the data space. It has to model the distribution throughout the data space.</p>
+<p>GANs offer an effective way to train such rich models to resemble a real distribution. To understand how they work we'll need to understand the basic structure of a GAN.</p>
+<h2 id="check-your-understanding-generative-vs-discriminative-models">Check Your Understanding: Generative vs. Discriminative Models</h2>
+<p>You have IQ scores for 1000 people. You model the distribution of IQ scores with the following procedure:</p>
+<ol type="1">
+<li>Roll three six-sided dice.</li>
+<li>Multiply the roll by a constant w.</li>
+<li>Repeat 100 times and take the average of all the results.</li>
+</ol>
+<p>You try different values for w until the result of your procedure equals the average of the real IQ scores. Is your model a generative model or a discriminative model?</p>
+<p>Generative model</p>
+<p>Correct: with every roll you are effectively generating the IQ of an imaginary person. Furthermore, your generative model captures the fact that IQ scores are distributed normally (that is, on a bell curve).</p>
+<p>Discriminative model</p>
+<p>Incorrect: an analogous discriminative model would try to discriminate between different kinds of IQ scores. For example, a discriminative model might try to classify an IQ as fake or real.</p>
+<p>Not enough information to tell.</p>
+<p>This model does indeed fit the definition of one of our two kinds of models.</p>
+<p>A model returns a probability when you give it a data instance. Is this model a generative model or a discriminative model?</p>
+<p>Generative model</p>
+<p>A generative model can estimate the probability of the instance, and also the probability of a class label.</p>
+<p>Discriminative model</p>
+<p>A discriminative model can estimate the probability that an instance belongs to a class.</p>
+<p>Not enough information to tell.</p>
+<p>Both generative and discriminative models can estimate probabilities (but they don't have to).</p>
+</main></body></html>

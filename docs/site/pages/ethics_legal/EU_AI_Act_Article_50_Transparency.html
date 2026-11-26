@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Article 50 Transparency</title><link rel="stylesheet" href="../../style.css?v=4ec6d3b4"><script>
+function getTheme(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}var m=/(?:^|;)theme=(light|dark)(?:;|$)/.exec(window.name||'');return m?m[1]:t;}
+function keepTheme(n){try{localStorage.setItem('theme',n);}catch(e){}var rest=(window.name||'').split(';').filter(function(p){return p&&p.indexOf('theme=')!==0;});rest.push('theme='+n);window.name=rest.join(';');}
+(function(){var t=getTheme();if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);keepTheme(t);}})();
+function toggleTheme(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);var n=dark?'light':'dark';r.setAttribute('data-theme',n);keepTheme(n);}
+</script></head>
+<body><header class="bar"><a class="home" href="../../../index.html">← A Diffuse Vision</a>
+<nav><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">Original page ↗</a> · <a href="../../../ethics_legal/EU_AI_Act_Article_50_Transparency.md">Raw file</a><a class="topcta" href="../../../site/pages/question_bank/02_question_bank.html">Questions</a><button class="toggle" onclick="toggleTheme()" aria-label="Toggle light or dark">◐</button></nav></header>
+<main class="doc"><h1 class="doc-title">Article 50 Transparency</h1><p><em>This is a short summary written for this study folder, not the legal text. Read the official text at the link above (Regulation (EU) 2024/1689, Article 50). The page originally saved here came from artificialintelligenceact.eu, a site that asks AI agents not to copy its content, so it was removed.</em></p>
+<h2 id="what-article-50-requires">What Article 50 requires</h2>
+<table>
+<thead>
+<tr>
+<th>Paragraph</th>
+<th>Who</th>
+<th>Obligation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50(1)</td>
+<td><strong>Providers</strong> of AI systems that interact directly with people (e.g. chatbots)</td>
+<td>Design the system so people are told they are interacting with an AI, unless that is obvious from the context.</td>
+</tr>
+<tr>
+<td>50(2)</td>
+<td><strong>Providers</strong> of AI systems that <strong>generate synthetic audio, image, video or text</strong></td>
+<td>Mark the outputs in a <strong>machine-readable format</strong> so they are <strong>detectable as artificially generated or manipulated</strong>. The technical solution should be effective, interoperable, robust and reliable as far as technically feasible (e.g. watermarks, metadata, cryptographic provenance).</td>
+</tr>
+<tr>
+<td>50(3)</td>
+<td><strong>Deployers</strong> of emotion-recognition or biometric-categorisation systems</td>
+<td>Inform the people exposed to the system.</td>
+</tr>
+<tr>
+<td>50(4)</td>
+<td><strong>Deployers</strong> of AI systems that create <strong>deepfakes</strong> (realistic image, audio or video of real people, places or events)</td>
+<td><strong>Disclose</strong> that the content was artificially generated or manipulated. For content that is evidently <strong>artistic, creative, satirical or fictional</strong>, the duty is limited to disclosing it in a way that does not spoil the display or enjoyment of the work. AI-generated text published to inform the public on matters of public interest must also be disclosed, unless it has had human editorial review.</td>
+</tr>
+<tr>
+<td>50(5)</td>
+<td>Everyone above</td>
+<td>The information must be given clearly, at the latest at the first interaction or exposure, and be accessible.</td>
+</tr>
+</tbody>
+</table>
+<p>The obligations apply from <strong>2 August 2026</strong>. The Commission encourages codes of practice on detecting and labelling AI-generated content. <em>(In late 2025 the EU proposed simplifying and delaying parts of the AI Act, including some grace periods for content marking. Check the current status before quoting dates in an exam.)</em></p>
+<h2 id="why-it-matters-for-visionary-studios">Why it matters for Visionary Studios</h2>
+<ul>
+<li><strong>Provider vs deployer.</strong> A studio that only <em>uses</em> a third-party image generator is a <strong>deployer</strong>. The tool's maker is the <strong>provider</strong> and must handle machine-readable marking (50(2)). If Visionary Studios builds or fine-tunes and offers its own model, it may take on provider duties too.</li>
+<li><strong>Advertising is not automatically "artistic".</strong> Photorealistic ads showing realistic people or places can count as deepfakes, which triggers disclosure under 50(4). Concept art that is clearly fictional falls under the lighter "creative work" rule.</li>
+<li><strong>Links to the booklet's "Transparency and AI disclosure" point.</strong> The law sets a minimum. The booklet asks the studio to set clear guidelines to keep the trust of clients and audiences, which can go further (e.g. telling clients which assets are AI-generated, and keeping provenance records using C2PA content credentials).</li>
+<li><strong>Jurisdiction.</strong> This is EU law. It applies when AI-generated content is placed on the EU market or affects people in the EU. Other countries have different or no rules, so don't present it as universal in an exam answer.</li>
+</ul>
+</main></body></html>
